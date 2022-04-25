@@ -18,6 +18,7 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
 
   Employee? data;
+  int? empId;
 
   void _apiEmpOne(int id){
     Network.GET(Network.API_ONE+id.toString(), Network.paramsEmpty()).then((response) => {

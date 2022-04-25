@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+class TestPage extends StatefulWidget {
+  const TestPage({Key? key}) : super(key: key);
+  static const String id="TestPage";
+
+  @override
+  State<TestPage> createState() => _TestPageState();
+}
+
+class _TestPageState extends State<TestPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("No Problems", style: TextStyle(color: Colors.black, fontSize: 25),),
+      ),
+    );
+  }
+}

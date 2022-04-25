@@ -6,6 +6,7 @@ import 'package:pardemo/model/emp_model.dart';
 import 'package:pardemo/model/model_create.dart';
 import 'package:pardemo/model/user_model.dart';
 import 'package:pardemo/pages/detail_page.dart';
+import 'package:pardemo/pages/test_page.dart';
 import 'package:pardemo/services/http_servic.dart';
 
 class HomePage extends StatefulWidget {
@@ -64,21 +65,23 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     _apiEmpList();
-    // _apiEmpOne(1);
   }
 
-  Future _openDetailPage() async{
+  Future _openDetailPage(Employee emp) async{
     Map getId  = await Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context){
-          return DetailPage(employee_id: id);
-        }
+        builder: (BuildContext context) => DetailPage(employee_id: emp.id)
     ));
-    if(getId.containsKey(id)){
+    if(getId.containsKey(emp.id)){
       setState(() {
-        id = getId[id];
+        emp.id = getId[emp.id];
       });
     }
   }
+
+  // void _openDetailPage(){
+  //   Navigator.
+  //   pushReplacementNamed(context, TestPage.id);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +114,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: (){
-        _openDetailPage();
+        _openDetailPage(emp);
       },
     );
   }
